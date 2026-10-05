@@ -1,26 +1,211 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --green: #083b70;
+  --cream: #f5efe3;
+  --gold: #e3bc2d;
+  --text: #082e58;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  margin: 0;
+  background: var(--cream);
+  color: var(--text);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.league-page {
+  width: min(1040px, calc(100% - 40px));
+  margin: 48px auto;
+}
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.site-header h1,
+.section-title,
+.champion-section h2 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  letter-spacing: 1px;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+}
+
+.site-header nav {
+  display: flex;
+  gap: 24px;
+}
+
+.site-header a {
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.site-header a:hover {
+  color: var(--gold);
+}
+
+.champion-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 235px;
+  padding: 38px;
+  background: var(--green);
+  border-left: 5px solid var(--gold);
+  color: var(--cream);
+}
+
+.eyebrow {
+  margin: 0 0 18px;
+  color: #e3d097;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.champion-section h2 {
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+.champion-section p:not(.eyebrow) {
+  margin: 0;
+}
+
+.trophy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 150px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: #e3d097;
+}
+
+.trophy span {
+  font-size: 3.8rem;
+}
+
+.trophy strong {
+  font-size: 1.3rem;
+}
+
+section {
+  margin-top: 42px;
+}
+
+.section-title {
+  margin: 0 0 16px;
+  font-size: 1.65rem;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #d9d4c8;
+  border-bottom: 1px solid #d9d4c8;
+}
+
+.stat-card {
+  padding: 22px 18px;
+  border-right: 1px solid #d9d4c8;
+}
+
+.stat-card:last-child {
+  border-right: none;
+}
+
+.stat-card p {
+  margin: 0 0 8px;
+  font-size: 0.88rem;
+  font-weight: bold;
+}
+
+.stat-card h3 {
+  margin: 0;
+  color: var(--green);
+  font-size: 1.15rem;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fffdf7;
+}
+
+th {
+  padding: 14px 18px;
+  background: var(--green);
+  color: var(--cream);
+  font-size: 0.8rem;
+  text-align: left;
+}
+
+td {
+  padding: 17px 18px;
+  border-bottom: 1px solid #ddd7ca;
+}
+
+td:first-child {
+  color: var(--green);
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+@media (max-width: 650px) {
+  .league-page {
+    width: min(100% - 28px, 1040px);
+    margin: 28px auto;
+  }
+
+  .site-header,
+  .champion-section {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .site-header nav {
+    gap: 16px;
+  }
+
+  .trophy {
+    align-self: center;
+  }
+
+  .stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    border-right: none;
+    border-bottom: 1px solid #d9d4c8;
+  }
+
+  .stat-card:last-child {
+    border-bottom: none;
+  }
 }
